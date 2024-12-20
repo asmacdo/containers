@@ -164,10 +164,8 @@ datalad install -d . -s ///repronim/containers code/containers
 # Optionally -- copy container of interest definition to the current (or desired)
 # version # to facilitate reproducibility while still being able to upgrade containers
 # subdataset if so desired to get access to newer versions.
-# We will also use 0.16.0 since newer ones require more memory and
-# would fail to run on CI.
 datalad run -m "Downgrade/Freeze mriqc container version" \
-  code/containers/scripts/freeze_versions --save-dataset=. bids-mriqc=0.16.0
+  code/containers/scripts/freeze_versions --save-dataset=. bids-mriqc=24.0.2
 # That version of mriqc does not have an option  --no-datalad-get  we had to
 # hardcode for mriqc to workaround an issue. So let's remove it
 datalad run -m "Remove ad-hoc option for mriqc for older frozen version" sed -i -e 's, --no-datalad-get,,g' .datalad/config
@@ -244,7 +242,7 @@ dataset, **or** the top-level dataset.
 ```bash
 # Run from ~/my-experiments/ds000003-qc
 datalad run -m "Downgrade/Freeze mriqc container version" \
-  code/containers/scripts/freeze_versions --save-dataset=. bids-mriqc=0.16.0
+  code/containers/scripts/freeze_versions --save-dataset=. bids-mriqc=24.0.2
 ```
 
 
@@ -254,7 +252,7 @@ datalad run -m "Downgrade/Freeze mriqc container version" \
 ```bash
 # Run from ~/my-experiments/ds000003-qc/
 datalad run -m "Downgrade/Freeze mriqc container version" \
-    code/containers/scripts/freeze_versions bids-mriqc=0.16.0
+    code/containers/scripts/freeze_versions bids-mriqc=24.0.2
 ```
 
 Note: It is recommended to freeze a container image version into the
